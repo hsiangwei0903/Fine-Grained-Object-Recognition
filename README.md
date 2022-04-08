@@ -1,5 +1,5 @@
 # Dog-Classifier
-This is the UW Capstone Project funded by Wy
+This is the UW Capstone Project funded by Wyze Lab.
 
 ```
 git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition.git
