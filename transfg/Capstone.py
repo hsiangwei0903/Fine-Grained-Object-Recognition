@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from PIL import Image
 
+# load yolov5s
 detector = torch.hub.load('ultralytics/yolov5', 'yolov5s')
 
 CONFIGS = {
