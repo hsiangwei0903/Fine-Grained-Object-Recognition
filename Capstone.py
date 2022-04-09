@@ -1,26 +1,22 @@
 import torch
 from __future__ import absolute_import, division, print_function
 import models_trans.configs as configs
+from models_trans.modeling import VisionTransformer, CONFIGS
+from models_trans.dog_class import classes
 import logging
 import argparse
 import os
 import random
 import numpy as np
-import time
-from PIL import Image
-from datetime import timedelta
-import torch
 import pandas as pd
+import time
 from torch.utils.data import Dataset
 from torchvision import transforms
-from models_trans.modeling import VisionTransformer, CONFIGS
-from models_trans.dog_class import classes
 import anvil.server
 import anvil.media
 import anvil.mpl_util
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-import random
 from PIL import Image
 
 detector = torch.hub.load('ultralytics/yolov5', 'yolov5s')
