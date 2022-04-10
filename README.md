@@ -7,6 +7,7 @@ Environment Building:
 git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition.git
 cd Fine-Grained-Object-Recognition
 git clone https://github.com/ultralytics/yolov5
+cd yolov5
 pip install -r requirements.txt
 ```
 
@@ -17,7 +18,7 @@ Model preparation:
 
 Web app deployment:
 ```
-cd transfg
+cd ../transfg
 python dogclassifier.py
 ```
 
