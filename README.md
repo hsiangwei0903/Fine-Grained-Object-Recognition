@@ -4,7 +4,7 @@ This is the UW Capstone Project funded by Wyze Labs and the UW ECE department.
 
 Environment Building:
 ```
-git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition.git
+git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
 cd Fine-Grained-Object-Recognition
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
