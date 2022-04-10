@@ -1,8 +1,8 @@
 ## Fine-Grained Object Recognition Project
 
 This is the UW Capstone Project funded by Wyze Labs and the UW ECE department.
-![](assets/uwece.png)
-![](assets/wyze.png)
+![](assets/uwece.png =250*250)
+![](assets/wyze.png =250*250)
 ## Installation
 ```
 git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
