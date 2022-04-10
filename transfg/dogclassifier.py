@@ -1,5 +1,5 @@
-import torch
 from __future__ import absolute_import, division, print_function
+import torch
 import models_trans.configs as configs
 from models_trans.modeling import VisionTransformer, CONFIGS
 from models_trans.dog_class import classes
