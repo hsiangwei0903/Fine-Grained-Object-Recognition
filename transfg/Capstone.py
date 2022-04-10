@@ -130,3 +130,4 @@ def dog_classifier(file):
       rect = patches.Rectangle((xmin,ymin),xmax-xmin,ymax-ymin, linewidth=3, edgecolor='g', facecolor='none')
       ax.add_patch(rect)
       return return_string , results.pandas().xyxy[0].iloc[0]['confidence'] ,anvil.mpl_util.plot_image()
+anvil.server.wait_forever()
