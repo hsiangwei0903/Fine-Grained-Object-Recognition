@@ -32,31 +32,6 @@ CONFIGS = {
     'testing': configs.get_testing(),
 }
 
-class FineGrainDataset(Dataset):
-    def __init__(self, root_dir, annotation_file, transform=None, test=False):
-        self.root_dir = root_dir 
-        self.annotations = pd.read_csv(annotation_file)
-        self.transform = transform
-        self.test = test
-
-    def __len__(self):
-        return len(self.annotations)
-
-    def __getitem__(self, index):
-        img_id = self.annotations.iloc[index, 0]
-        if self.test == False:
-            img = Image.open(os.path.join(self.root_dir, img_id)).convert(
-                "RGB")
-            temp = self.annotations.iloc[index, 1]
-            y_label = torch.tensor(self.annotations.iloc[index, 1]).long()
-            img = self.transform(img)
-            return (img, y_label - 1)
-        else:
-            # print("fetch testing image id: ", img_id)
-            img = Image.open(os.path.join(self.root_dir, img_id)).convert("RGB")
-            img = self.transform(img)
-            return (img, img_id)
-
 #training model parameter setting
 config = CONFIGS["ViT-B_16"]
 config.slide_step = 12
