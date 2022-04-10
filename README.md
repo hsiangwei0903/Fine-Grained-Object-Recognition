@@ -20,3 +20,5 @@ Web app deployment:
 cd transfg
 python dogclassifier.py
 ```
+
+And then you can run the inference at the [[dog classifier website]](https://dog-classifier-hsiangwei.anvil.app/)
