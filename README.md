@@ -1,6 +1,6 @@
 # Fine-Grained Object Recognition Project
 
-This is the University of Washington Capstone Project funded by Wyze Lab and the UW ECE department.
+This is the UW Capstone Project funded by Wyze Labs and the UW ECE department.
 
 Environment Building:
 ```
