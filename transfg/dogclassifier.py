@@ -21,6 +21,7 @@ from PIL import Image
 
 # load yolov5s
 detector = torch.hub.load('ultralytics/yolov5', 'yolov5s')
+print('yolov5s loaded')
 
 CONFIGS = {
     'ViT-B_16': configs.get_b16_config(),
@@ -33,19 +34,19 @@ CONFIGS = {
 
 class FineGrainDataset(Dataset):
     def __init__(self, root_dir, annotation_file, transform=None, test=False):
-        self.root_dir = root_dir  # 圖片本人路徑
-        self.annotations = pd.read_csv(annotation_file)  # 上一步做的CSV
-        self.transform = transform  # 定義要做的transform, 含有resize把圖片先resize成依樣
+        self.root_dir = root_dir 
+        self.annotations = pd.read_csv(annotation_file)
+        self.transform = transform
         self.test = test
 
     def __len__(self):
         return len(self.annotations)
 
     def __getitem__(self, index):
-        img_id = self.annotations.iloc[index, 0]  # 取出image id => ex: 0003.jpg
+        img_id = self.annotations.iloc[index, 0]
         if self.test == False:
             img = Image.open(os.path.join(self.root_dir, img_id)).convert(
-                "RGB")  # 取出image id 對應的圖片本人, 並且轉RGB(等等用transform來轉tensor)
+                "RGB")
             temp = self.annotations.iloc[index, 1]
             y_label = torch.tensor(self.annotations.iloc[index, 1]).long()
             img = self.transform(img)
@@ -112,15 +113,17 @@ def dog_classifier(file):
           test_pred = model(x.unsqueeze(0).cuda())
           # get label
           test_label = np.argmax(test_pred.cpu().data.numpy(), axis=1)
+          # get probability
           probs = torch.nn.Softmax(dim=-1)(test_pred)
+          # write dog class and prob
           dog_pred.append(classes[test_label[-1]])
           dog_prob.append(int(round(float(probs[0][int(test_label)]),3)*100))
+          # put dog class on the bounding box
           plt.text(xmin, ymin, classes[test_label[-1]]+' '+str(int(round(float(probs[0][int(test_label)]),3)*100))+'%', fontsize = 8,bbox = dict(facecolor = 'red', alpha = 0.5))
     
     if dog == 1:
       # save plot
       plt.savefig('pics/{}{}.png'.format('dog',random.randint(0,1000)))
-      # return dog breed that is predicted by the model
       # return return_string,round(float(probs[0][int(test_label)]),3),anvil.mpl_util.plot_image()
       return str(len(dog_pred))+' dogs detected!',float(sum(dog_prob)/len(dog_prob))/100,anvil.mpl_util.plot_image()
     if dog == 0: # no dog detected in the image
