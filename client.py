@@ -36,7 +36,7 @@ urllib.request.urlretrieve(url, filename)
 with open("imagenet_classes.txt", "r") as f:
     categories = [s.strip() for s in f.readlines()]
 
-for folder in os.listdir("../TestImages/test"):
+for folder in os.listdir("./TestImages/test"):
     # print(folder)
     dog_class = folder.split("-")[1]
     dog_class = dog_class.replace("_", " ").lower()
@@ -48,10 +48,10 @@ for folder in os.listdir("../TestImages/test"):
     accurate_prediction_counter = 0
     total_number_of_images = 0
 
-    for file in os.listdir("../TestImages/test/" + folder):
+    for file in os.listdir("./TestImages/test/" + folder):
         if file.endswith("jpg"):
             total_number_of_images += 1
-            image_path = "../TestImages/test/" + folder + "/" + file
+            image_path = "./TestImages/test/" + folder + "/" + file
             img = Image.open(image_path).convert('RGB')
             # transform and add batch dimension
             tensor = transform(img).unsqueeze(0)
