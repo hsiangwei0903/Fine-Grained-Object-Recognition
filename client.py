@@ -1,4 +1,4 @@
-import tent
+import tent.tent as tent
 import torch
 import torchvision.models as models
 import timm
@@ -19,7 +19,6 @@ TOTAL_CORRECT_ENTIRE = 0
 
 # model = models.densenet121()
 model = timm.create_model('densenet121', pretrained=True)
-model.eval()
 model = tent.configure_model(model)
 params, param_names = tent.collect_params(model)
 optimizer = torch.optim.SGD(params, lr=1e-3)
