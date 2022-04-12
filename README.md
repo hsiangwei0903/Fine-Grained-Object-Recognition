@@ -21,7 +21,7 @@ pip install anvil-uplink
 
 ## Web app deployment
 ```
-cd ../transfg
+cd transfg
 python3 dogclassifier.py
 ```
 
