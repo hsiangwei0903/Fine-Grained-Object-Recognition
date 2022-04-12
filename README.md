@@ -9,6 +9,8 @@ git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
 cd Fine-Grained-Object-Recognition
 git clone https://github.com/ultralytics/yolov5
 cd yolov5
+conda create -n capstone
+conda activate capstone
 pip install -r requirements.txt
 pip install anvil-uplink
 ```
