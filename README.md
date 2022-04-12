@@ -3,6 +3,7 @@
 This is the UW Capstone Project funded by Wyze Labs and the UW ECE department.
 
 ## Installation
+We are using torch-1.10.1 torchvision-0.11.2
 ```
 git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
 cd Fine-Grained-Object-Recognition
@@ -20,7 +21,7 @@ pip install anvil-uplink
 ## Web app deployment
 ```
 cd ../transfg
-python dogclassifier.py
+python3 dogclassifier.py
 ```
 
 And then you can run the inference on the [[dog classifier website]](https://dog-classifier-hsiangwei.anvil.app/)
