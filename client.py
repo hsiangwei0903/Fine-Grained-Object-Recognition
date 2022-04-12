@@ -16,17 +16,17 @@ from timm.data.transforms_factory import create_transform
 TOTAL_IMAGES_ENTIRE = 0
 TOTAL_CORRECT_ENTIRE = 0
 
-
-# model = models.densenet121()
+# grab pretrained densenet model and set up config/transform to be used later on in processing input images
 model = timm.create_model('densenet121', pretrained=True)
+config = resolve_data_config({}, model=model)
+transform = create_transform(**config)
+
+# following github code for "tenting" model
 model = tent.configure_model(model)
 params, param_names = tent.collect_params(model)
 optimizer = torch.optim.SGD(params, lr=1e-3)
 print(tent.check_model(model))
 tented_model = tent.Tent(model, optimizer)
-config = resolve_data_config({}, model=model)
-transform = create_transform(**config)
-print(config)
 
 
 # Get imagenet class mappings
@@ -37,7 +37,6 @@ with open("imagenet_classes.txt", "r") as f:
     categories = [s.strip() for s in f.readlines()]
 
 for folder in os.listdir("./TestImages/test_google"):
-    # print(folder)
     dog_class = folder.split("-")[1]
     dog_class = dog_class.replace("_", " ").lower()
     categories = [category.lower() for category in categories]
@@ -55,31 +54,26 @@ for folder in os.listdir("./TestImages/test_google"):
             img = Image.open(image_path).convert('RGB')
             # transform and add batch dimension
             tensor = transform(img).unsqueeze(0)
-            with torch.no_grad():
-                out = tented_model(tensor)
-                probabilities = torch.nn.functional.softmax(out[0], dim=0)
-                accurate_prediction = False
-                top1_prob, top1_catid = torch.topk(probabilities, 1)
-                print(categories[top1_catid[0]], top1_prob[0].item())
-                if(categories[top1_catid[0]] == dog_class):
-                    accurate_prediction = True
-                if (accurate_prediction):
-                    # print(file + " had its actual category in the top 1 prediction")
-                    # print("\n")
-                    accurate_prediction_counter += 1
-                # else:
-                #     print(
-                #         file + " did not have its actual category in the top 1 prediction")
-                #     print("\n")
+            # with torch.no_grad():
+            out = tented_model(tensor)
+            probabilities = torch.nn.functional.softmax(out[0], dim=0)
+
+            accurate_prediction = False
+            top1_prob, top1_catid = torch.topk(probabilities, 1)
+            print(categories[top1_catid[0]], top1_prob[0].item())
+            if(categories[top1_catid[0]] == dog_class):
+                accurate_prediction = True
+            if (accurate_prediction):
+                accurate_prediction_counter += 1
+                
     accuracy = (accurate_prediction_counter / total_number_of_images) * 100
     print("Total images: " + str(total_number_of_images))
-    print("DenseNet121 had a " + str(accuracy) + "% accuracy on images in " + dog_class)
+    print("DenseNet121 had a " + str(accuracy) +
+          "% accuracy on images in " + dog_class)
     print("\n")
     TOTAL_IMAGES_ENTIRE += total_number_of_images
     TOTAL_CORRECT_ENTIRE += accurate_prediction_counter
 
 print("\n")
 print("accuracy is " + str(TOTAL_CORRECT_ENTIRE/TOTAL_IMAGES_ENTIRE))
-# print("latency is: " + str(average_time))
-# print("throughput per 60s is " + str(minute_throughput))
-# outputs = tented_model(inputs)  # now it infers and adapts!
+
