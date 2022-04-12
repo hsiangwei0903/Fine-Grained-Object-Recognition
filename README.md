@@ -9,7 +9,6 @@ We are using torch-1.10.1 torchvision-0.11.2
 git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
 cd Fine-Grained-Object-Recognition
 git clone https://github.com/ultralytics/yolov5
-cd yolov5
 conda create -n capstone
 conda activate capstone
 pip install -r requirements.txt
