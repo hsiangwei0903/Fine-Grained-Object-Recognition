@@ -22,8 +22,8 @@ model = timm.create_model('densenet121', pretrained=True)
 model = tent.configure_model(model)
 params, param_names = tent.collect_params(model)
 optimizer = torch.optim.SGD(params, lr=1e-3)
+print(tent.check_model(model))
 tented_model = tent.Tent(model, optimizer)
-print(tent.check_model(tented_model))
 config = resolve_data_config({}, model=model)
 transform = create_transform(**config)
 print(config)
@@ -36,7 +36,7 @@ urllib.request.urlretrieve(url, filename)
 with open("imagenet_classes.txt", "r") as f:
     categories = [s.strip() for s in f.readlines()]
 
-for folder in os.listdir("./TestImages/test"):
+for folder in os.listdir("./TestImages/test_google"):
     # print(folder)
     dog_class = folder.split("-")[1]
     dog_class = dog_class.replace("_", " ").lower()
@@ -48,10 +48,10 @@ for folder in os.listdir("./TestImages/test"):
     accurate_prediction_counter = 0
     total_number_of_images = 0
 
-    for file in os.listdir("./TestImages/test/" + folder):
+    for file in os.listdir("./TestImages/test_google/" + folder):
         if file.endswith("jpg"):
             total_number_of_images += 1
-            image_path = "./TestImages/test/" + folder + "/" + file
+            image_path = "./TestImages/test_google/" + folder + "/" + file
             img = Image.open(image_path).convert('RGB')
             # transform and add batch dimension
             tensor = transform(img).unsqueeze(0)
