@@ -1,5 +1,4 @@
 import tent.tent as tent
-import torch
 import torchvision.models as models
 import timm
 import urllib
@@ -15,7 +14,7 @@ from timm.data.transforms_factory import create_transform
 
 TOTAL_IMAGES_ENTIRE = 0
 TOTAL_CORRECT_ENTIRE = 0
-
+print(torch.cuda.is_available())
 # grab pretrained densenet model and set up config/transform to be used later on in processing input images
 model = timm.create_model('densenet121', pretrained=True)
 config = resolve_data_config({}, model=model)
