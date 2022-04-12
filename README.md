@@ -1,7 +1,7 @@
 ## Fine-Grained Object Recognition Project
 
 This is the UW Capstone Project funded by Wyze Labs and the UW ECE department.
-![](dog_classifier.jpg)
+![](dog_classifier.png)
 
 ## Installation
 We are using torch-1.10.1 torchvision-0.11.2
