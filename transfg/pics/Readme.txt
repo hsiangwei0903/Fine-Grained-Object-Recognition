@@ -1,1 +1,0 @@
-The upload picture saves at here
