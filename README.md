@@ -11,7 +11,7 @@ Notebooks folder contains the code for benchmarking pretrained (on ImageNet) mod
 
 The tent folder and client.py (entry point) are the implementation and code from https://github.com/DequanWang/tent based on https://arxiv.org/pdf/2006.10726.pdf. This is code for parameter modulation at time of inference, which is also known as test-time adaption.
 
-I am using timms package to import an untrained densenet or resnet, and then training on stanford dogs dataset.
+TrainingAndTent notebook is my code for training a pretrained resnet on the stanford dogs dataset.
 
 
 ## Installation
