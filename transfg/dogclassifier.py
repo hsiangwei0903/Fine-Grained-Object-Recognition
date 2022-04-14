@@ -104,7 +104,7 @@ def dog_classifier(file):
       return_string = ""
       for i in range(len(dog_pred)):
             if i != len(dog_pred)-1:
-                return_string += dog_pred[i]+" and"
+                return_string += dog_pred[i]+" and "
             else:
                 return_string += dog_pred[i]
       # return return_string,round(float(probs[0][int(test_label)]),3),anvil.mpl_util.plot_image()
