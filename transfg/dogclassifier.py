@@ -43,6 +43,7 @@ test_transform = transforms.Compose([transforms.Resize((600, 600), Image.BILINEA
 
 #Pretrained TransFG mdoel prepared
 pretrained_model_path = "./output/transfg.bin"
+print("loading model from {}".format(pretrained_model_path))
 model = VisionTransformer(config, 348, zero_head=True, num_classes=120, smoothing_value=0.0)
 if pretrained_model_path is not None:
   pretrained_model = torch.load(pretrained_model_path)['model']
@@ -51,8 +52,9 @@ model.to(device)
 model.eval()
 print('model prepared')
 
+print('==============anvil connecting==============')
 anvil.server.connect("server_VFL2ORJJKT22YWR7YJEL2AVN-4TTOM7KQI4VYB57T")
-print('anvil connected')
+print('==============anvil connected==============')
 
 @anvil.server.callable
 def dog_classifier(file):
@@ -94,13 +96,19 @@ def dog_classifier(file):
           dog_pred.append(classes[test_label[-1]])
           dog_prob.append(int(round(float(probs[0][int(test_label)]),3)*100))
           # put dog class on the bounding box
-          plt.text(xmin, ymin, classes[test_label[-1]]+' '+str(int(round(float(probs[0][int(test_label)]),3)*100))+'%', fontsize = 8,bbox = dict(facecolor = 'red', alpha = 0.5))
+          plt.text(xmin, ymin, classes[test_label[-1]]+' '+str(int(round(float(probs[0][int(test_label)]),3)*100))+'%', fontsize = 14,bbox = dict(facecolor = 'red', alpha = 0.5))
     
     if dog == 1:
       # save plot
       plt.savefig('pics/{}{}.png'.format('dog',random.randint(0,1000)))
+      return_string = ""
+      for i in range(len(dog_pred)):
+            if i != len(dog_pred)-1:
+                return_string += dog_pred[i]+" and"
+            else:
+                return_string += dog_pred[i]
       # return return_string,round(float(probs[0][int(test_label)]),3),anvil.mpl_util.plot_image()
-      return str(len(dog_pred))+' dogs detected!',float(sum(dog_prob)/len(dog_prob))/100,anvil.mpl_util.plot_image()
+      return return_string + ' detected!',float(sum(dog_prob)/len(dog_prob))/100,anvil.mpl_util.plot_image()
     if dog == 0: # no dog detected in the image
       return_string = 'No dog detected, instead detect a {}!'.format(results.pandas().xyxy[0].iloc[0]['name']) # return the object with highest confidence score 
       plt.savefig('pics/{}{}.png'.format(results.pandas().xyxy[0].iloc[0]['name'],random.randint(0,1000)))
