@@ -25,4 +25,4 @@ cd transfg
 python3 dogclassifier.py
 ```
 
-And then you can run the inference on the [dog classifier website](https://dog-classifier-hsiangwei.anvil.app/)
+And then you can run the inference on the [dog classifier website](https://dog-classifier-capstone.anvil.app/)
