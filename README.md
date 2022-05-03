@@ -17,7 +17,7 @@ pip install anvil-uplink
 
 ## Model preparation
 1. Download [ViT-B_16 Model](https://drive.google.com/drive/folders/12iHLSfN_zYDwWt2BmR4wwBfV83GUFeAG) and put it in transfg/model
-2. Download the [transfg.bin](https://drive.google.com/drive/folders/1_fCMORZiUWMCpfdMzc-OLfFNaFYYwths) and put it in transfg/output
+2. Download [transfg.bin](https://drive.google.com/drive/folders/1_fCMORZiUWMCpfdMzc-OLfFNaFYYwths) and put it in transfg/output
 
 ## Web app deployment
 ```
