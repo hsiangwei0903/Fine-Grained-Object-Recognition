@@ -4,11 +4,10 @@ This is the UW Capstone Project funded by [Wyze Labs](https://www.wyze.com/) and
 ![](dog_classifier.png)
 
 ## Updates
-TransFG Dog Tracker Released!
+TransFG Dog Tracker Released (2022.05.05)
 ```
 python3 track.py
 ```
-
 
 ## Installation
 We are using python==3.8 torch>=1.7.0 torchvision>=0.8.1
