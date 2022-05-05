@@ -83,6 +83,8 @@ path_out = '/home/ubuntu/hsiangwei/Fine-Grained-Object-Recognition/wyze/result/'
 if not os.path.exists(path_out+seq+'/'):
   os.mkdir(path_out+seq+'/')
 
+# TODO Remove track if it is missing for too many frames (maybe 10~20 frames)
+
 tracks = []
 tracks_name = []
 initiate = []
