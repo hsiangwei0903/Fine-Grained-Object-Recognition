@@ -77,8 +77,8 @@ print('model prepared')
 
 seq = 'dogs'
 
-imgs = sorted(glob.glob('/home/ubuntu/hsiangwei/Fine-Grained-Object-Recognition/wyze/{}/*'.format(seq)))
-path_out = '/home/ubuntu/hsiangwei/Fine-Grained-Object-Recognition/wyze/result/'
+imgs = sorted(glob.glob('/home/ubuntu/hsiangwei/Fine-Grained-Object-Recognition/wyze/{}/*'.format(seq))) # dir of images
+path_out = '/home/ubuntu/hsiangwei/Fine-Grained-Object-Recognition/wyze/result/' # dir of output
 
 if not os.path.exists(path_out+seq+'/'):
   os.mkdir(path_out+seq+'/')
@@ -87,7 +87,6 @@ tracks = []
 tracks_name = []
 initiate = []
 for frame,img in enumerate(imgs):
-  #print('processing :{}/{}'.format(i,len(imgs)))
   model.to(device)
   model.eval()
   image = Image.open(img).convert('RGB')
@@ -109,28 +108,28 @@ for frame,img in enumerate(imgs):
             dets.append([xmin,ymin,xmax,ymax])
             dets_name.append(str(classes[test_label[-1]]))
   
-  if len(tracks)==0:
+  if len(tracks)==0: # first frame
     print('initiate tracking')
-    for d_id,det in enumerate(dets):
+    for d_id,det in enumerate(dets): # append detection to initial tracks
       tracks.append(det)
       tracks_name.append(dets_name[d_id])
       initiate.append(True)
 
-  else:
+  else: # build cost matrix according to IoU of tracks and detections
     cost_matrix = np.ones([len(tracks),len(dets)])
     for i in range(len(tracks)):
       for j in range(len(dets)):
-        if iou(tracks[i],dets[j]) > 0.05:
-          cost_matrix[i][j] = 1 - iou(tracks[i],dets[j])
+        if iou(tracks[i],dets[j]) > 0.05: 
+          cost_matrix[i][j] = 1 - iou(tracks[i],dets[j]) # cost matrix is 1 - IoU
         else:
           cost_matrix[i][j] = 1
       
-    row_ind,col_ind = linear_sum_assignment(cost_matrix)
+    row_ind,col_ind = linear_sum_assignment(cost_matrix) # Hungarian association between every track and detection
 
-    for n in range(len(initiate)):
+    for n in range(len(initiate)): # Set all the initiate to False
       initiate[n] = False
 
-    for row in row_ind:
+    for row in row_ind: # activate initiate, update online tracks and pop detection if the association cost is lower than 0.9 (IoU > 0.1)
       for col in col_ind:
         if cost_matrix[row][col]<0.9:
           tracks[row] = dets[col]
@@ -140,40 +139,17 @@ for frame,img in enumerate(imgs):
           dets_name[col] = None 
           
 
-    for id,unmatch_det in enumerate(dets):
+    for id,unmatch_det in enumerate(dets): # initiate new tracks for those unmatch detection
       if unmatch_det:
         tracks.append(unmatch_det)
         tracks_name.append(dets_name[id])
         initiate.append(True)
         print('initiate new track')
     
-  for t_id,trk in enumerate(tracks):
+  for t_id,trk in enumerate(tracks): # plot tracks if initiate is True
     if initiate[t_id]:
       cv2.rectangle(im_out,(int(trk[0]),int(trk[1])),(int(trk[2]),int(trk[3])),get_color(t_id),4)
       cv2.putText(im_out,str(t_id)+'.'+tracks_name[t_id],(int(trk[0]),int(trk[1])),cv2.FONT_HERSHEY_PLAIN,max(1.0, img.shape[1]/1200),(0,255,255),thickness = 2)  
   
   print('writing img {}'.format(frame))
   cv2.imwrite(path_out+seq+'/{}.jpg'.format("%04d"%frame),im_out)
-
-
-
-'''
-        if results.pandas().xyxy[0].iloc[i]['name']=='cat': # cat detected in the image
-          if results.pandas().xyxy[0].iloc[i]['confidence'] > 0: # setting confidence threshold
-            # get the bounding box
-            xmin,ymin,xmax,ymax = results.pandas().xyxy[0].iloc[i]['xmin'],results.pandas().xyxy[0].iloc[i]['ymin'],results.pandas().xyxy[0].iloc[i]['xmax'],results.pandas().xyxy[0].iloc[i]['ymax'] 
-            xmin,ymin,xmax,ymax = int(xmin),int(ymin),int(xmax),int(ymax)
-            img_crop = img[ymin:ymax,xmin:xmax]
-            for t_id in tracks:
-              if iou(tracks[t_id],[xmin,ymin,xmax,ymax])>0.6:
-                tracks[t_id]=[xmin,ymin,xmax,ymax]
-                cv2.rectangle(im_out,(int(xmin),int(ymin)),(int(xmax),int(ymax)),get_color[t_id],4)
-                cv2.putText(im_out,'cat'+str(t_id),(int(xmin),int(ymin)),cv2.FONT_HERSHEY_PLAIN,max(1.0, img.shape[1]/1200),(0,255,255),thickness = 4)
-                initiate = False
-                break
-            if initiate:
-              t_id = len(tracks)
-              tracks[t_id] = [xmin,ymin,xmax,ymax]
-              cv2.rectangle(im_out,(int(xmin),int(ymin)),(int(xmax),int(ymax)),colors[len(tracks)+1],4)
-              cv2.putText(im_out,'cat'+str(t_id),(int(xmin),int(ymin)),cv2.FONT_HERSHEY_PLAIN,max(1.0, img.shape[1]/1200),(0,255,255),thickness = 4)
-'''
