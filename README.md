@@ -6,7 +6,7 @@ This is the UW Capstone Project funded by [Wyze Labs](https://www.wyze.com/) and
 ## Updates
 TransFG Dog Tracker Released (2022.05.05)
 ```
-python3 track.py
+python3 track_postprocessing.py
 ```
 
 ## Installation
