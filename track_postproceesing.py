@@ -23,6 +23,7 @@ import time
 new_classes = classes
 new_classes.append('cat')
 new_classes.append('human')
+new_classes.append('car')
 
 def iou(bboxA,bboxB):
     left = max(bboxA[0],bboxB[0])
@@ -74,14 +75,7 @@ def update_output(frame,box,id,class_id,output,output_name):
 detector = torch.hub.load('ultralytics/yolov5', 'yolov5l')
 print('yolov5 loaded')
 
-CONFIGS = {
-    'ViT-B_16': configs.get_b16_config(),
-    'ViT-B_32': configs.get_b32_config(),
-    'ViT-L_16': configs.get_l16_config(),
-    'ViT-L_32': configs.get_l32_config(),
-    'ViT-H_14': configs.get_h14_config(),
-    'testing': configs.get_testing(),
-}
+CONFIGS = {'ViT-B_16': configs.get_b16_config(),}
 
 #training model parameter setting
 config = CONFIGS["ViT-B_16"]
@@ -160,6 +154,12 @@ for s_id,seq in enumerate(seqs):
               xmin,ymin,xmax,ymax = int(xmin),int(ymin),int(xmax),int(ymax)
               dets.append([xmin,ymin,xmax,ymax])
               dets_name.append(121)
+          elif results.pandas().xyxy[0].iloc[i]['name']=='car': # cat detected in the image
+            if results.pandas().xyxy[0].iloc[i]['confidence'] > 0.4: # setting confidence threshold
+              xmin,ymin,xmax,ymax = results.pandas().xyxy[0].iloc[i]['xmin'],results.pandas().xyxy[0].iloc[i]['ymin'],results.pandas().xyxy[0].iloc[i]['xmax'],results.pandas().xyxy[0].iloc[i]['ymax'] 
+              xmin,ymin,xmax,ymax = int(xmin),int(ymin),int(xmax),int(ymax)
+              dets.append([xmin,ymin,xmax,ymax])
+              dets_name.append(122)
     
       if len(tracks)==0: # first frame
         for d_id,det in enumerate(dets): # append detection to initial tracks
@@ -232,21 +232,19 @@ for s_id,seq in enumerate(seqs):
 
   # plotting part
   print('writing started')
-  line = 0
-  init = True
-  while line < len(final):
-    current_frame = final[line][0] # starts from 0
-    if init:
-      img = cv2.imread(imgs[current_frame])
-      im_out = copy.deepcopy(img)
-    cv2.rectangle(im_out,(int(final[line][1]),int(final[line][2])),(int(final[line][3]),int(final[line][4])),get_color(int(final[line][-1])),4)
-    cv2.putText(im_out,str(final[line][-1])+'.'+str(new_classes[final[line][5]]),(int(final[line][1]),int(final[line][2])),cv2.FONT_HERSHEY_PLAIN,max(1.0, img.shape[1]/1200),(0,255,255),thickness = 2)
-    line += 1
-    init = False
-    if line == len(final):
-      break
-    elif final[line][0] != current_frame:
-      cv2.imwrite(path_out+seq+'/{}.jpg'.format("%04d"%current_frame),im_out)
-      init = True
   
-  print('writing finished')
+  for frame,image in enumerate(imgs): # starts from 0
+    img = cv2.imread(image)
+    im_out = copy.deepcopy(img)
+    for line,label in final:
+      if frame == label[0]:
+        cv2.rectangle(im_out,(int(label[1]),int(label[2])),(int(label[3]),int(label[4])),get_color(int(label[-1])),4)
+        if line[5]<120:
+          cv2.putText(im_out,'dog'+' & '+str(new_classes[label[5]]),(int(label[1]),int(label[2])),cv2.FONT_HERSHEY_PLAIN,3.0,(0,255,255),thickness = 2)
+        else:
+          cv2.putText(im_out,str(new_classes[label[5]]),(int(label[1]),int(label[2])),cv2.FONT_HERSHEY_PLAIN,3.0,(0,255,255),thickness = 2)
+      elif frame < label[0]:
+        break
+    cv2.imwrite(path_out+seq+'/{}.jpg'.format("%04d"%frame),im_out)
+  
+  print('finished writiing')
