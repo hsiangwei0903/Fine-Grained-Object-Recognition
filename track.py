@@ -1,4 +1,6 @@
-from __future__ import absolute_import, division, print_function
+'''
+This is the TransFG dog tracker without majority vote post processing in the end.
+'''
 import torch
 import models_trans.configs as configs
 from models_trans.modeling import VisionTransformer, CONFIGS
