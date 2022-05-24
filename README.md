@@ -1,34 +1,17 @@
 # Fine-Grained Object Recognition Project
 
 This is the UW Capstone Project funded by [Wyze Labs](https://www.wyze.com/) and the [UW ECE department](https://www.ece.uw.edu/).
-![](dog_classifier.png)
 
-## Updates
-TransFG Dog Tracker Released (2022.05.05)
-```
-python3 track.py
-```
+This branch contains the work done by Conor Knox.
 
-## Installation
-We are using python==3.8 torch>=1.7.0 torchvision>=0.8.1
-```
-git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
-cd Fine-Grained-Object-Recognition
-git clone https://github.com/ultralytics/yolov5
-conda create -n capstone
-conda activate capstone
-pip install -r requirements.txt
-pip install anvil-uplink
-```
+## Semantically Enhanced Features
 
-## Model preparation
-1. Download [ViT-B_16 Model](https://drive.google.com/drive/folders/12iHLSfN_zYDwWt2BmR4wwBfV83GUFeAG) and put it in transfg/model
-2. Download [transfg.bin](https://drive.google.com/drive/folders/1_fCMORZiUWMCpfdMzc-OLfFNaFYYwths) and put it in transfg/output
+`SEF-master` contains the code from https://github.com/cswluo/SEF which is based on https://arxiv.org/pdf/2006.13457.pdf.
+The Jupyter Notebook file `SEF_final.ipynb` use parts of the original code and allow you to train and evaluate your own SEF model based on ResNet architecture. `SEF_aug_tent_final.ipynb` combines this work with data augmentation and Tent: Fully Test-Time Adaptation by Entropy Minimization from https://github.com/DequanWang/tent.
 
-## Web app deployment
-```
-cd transfg
-python3 dogclassifier.py
-```
+## Adjusting for Wyze Cam v3 distortion
 
-And then you can run the inference on the [dog classifier website](https://dog-classifier-capstone.anvil.app/)
+`Checkerboard` contains images taken by a Wyze Cam v3. Run `calibrate.py` from within that folder to obtain the camera's parameters K and D.
+
+Use these parameters in `undistort.py` to undistort images taken by the Wyze Cam v3.
+
