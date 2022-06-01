@@ -25,8 +25,8 @@ We used image data of the dog breeds in `stdogs25-classes.txt`for training and e
 
 `git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition`
 
-Place `undistort.py` in this folder
+Place `undistort.py` in the SEF folder
 
-Download the `.pth` file for the model you are going to train. The download URLs are in the `.ipynb` files.
+Download the `.pth` file for the model you are going to train and put it in the SEF folder. The download URLs are in the `.ipynb` files.
 
 Run `SEF_final.ipynb` or `SEF_aug_tent_final.ipynb`
