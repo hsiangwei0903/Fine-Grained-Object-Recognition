@@ -13,11 +13,11 @@ The Jupyter Notebook file `SEF_final.ipynb` use parts of the original code and a
 
 `Checkerboard` contains images taken by a Wyze Cam v3. Run `calibrate.py` from within that folder to obtain the camera's parameters K and D.
 
-Use these parameters in `undistort.py` to undistort images taken by the Wyze Cam v3.
+Use these parameters in `undistort.py` to undistort images taken by the Wyze Cam v3. The file currently contains the correct parameters for the Wyze Cam v3.
 
 ## Image data
 
-We used image data of the dog breeds in `stdogs25-classes.txt`for training and evaluating. The corresponding folders in the Stanford Dogs dataset were used for training. We curated 3 custom datasets for testing.
+We used image data of the dog breeds in `stdogs25-classes.txt`for training and evaluating. The corresponding folders in the Stanford Dogs dataset were used for training. We curated 3 custom datasets for testing. The dataset is available at https://drive.google.com/drive/folders/1GbegJxFDZHp0NiN0bq9VngtMXo9Vjaoi?usp=sharing
 
 ## Installation
 
