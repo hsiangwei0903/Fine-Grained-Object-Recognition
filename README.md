@@ -21,4 +21,4 @@ We used image data of the dog breeds in `stdogs25-classes.txt`for training and e
 
 ## Installation
 
-git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
+`git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition`
