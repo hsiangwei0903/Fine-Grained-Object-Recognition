@@ -18,3 +18,7 @@ Use these parameters in `undistort.py` to undistort images taken by the Wyze Cam
 ## Image data
 
 We used image data of the dog breeds in `stdogs25-classes.txt`for training and evaluating. The corresponding folders in the Stanford Dogs dataset were used for training. We curated 3 custom datasets for testing.
+
+## Installation
+
+git clone https://github.com/hsiangwei0903/Fine-Grained-Object-Recognition
