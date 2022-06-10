@@ -2,4 +2,8 @@
 PyTorch implementation of WS-DAN (Weakly Supervised Data Augmentation Network) for FGVC (Fine-Grained Visual Classification) (_Hu et al._, 
 ["See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification"](https://arxiv.org/abs/1901.09891v2), arXiv:1901.09891)
 
-Cloned from [Pytorch version](https://github.com/GuYuc/WS-DAN.PyTorch)
+Cloned from [Pytorch version]()
+
+
+Getting started
+git clone https://github.com/GuYuc/WS-DAN.PyTorch
