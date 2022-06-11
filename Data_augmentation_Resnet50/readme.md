@@ -13,7 +13,7 @@ I wrote the entire pipeline from scratch keeping in account with our problem sta
 
 
 Folder contains :
-> stanforddogs_train&test - renet50 architecture without Data Augmentation, trained and tested on Stanford dogs datset 
-  > resnet50_noDataAug - renet50 architecture without Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset
-    > wyze_test - renet50 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset
-      > youtube_googleImages - renet50 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Google and Youtube Dataset
+1. stanforddogs_train&test - renet50 architecture without Data Augmentation, trained and tested on Stanford dogs datset 
+2. resnet50_noDataAug - renet50 architecture without Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset
+3. wyze_test - renet50 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset
+4. youtube_googleImages - renet50 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Google and Youtube Dataset
