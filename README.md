@@ -19,7 +19,7 @@
 - PyTorch implementation of WS-DAN (Weakly Supervised Data Augmentation Network) for FGVC (Fine-Grained Visual Classification) (Hu et al., "See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification", arXiv:1901.09891) (https://arxiv.org/abs/1901.09891) 
 (** More details inside the respective folder**) 
 
-- I used the open source code and adapted it to our use case. Below image shows the heatmap visualization for our test dataset using WSDAN technique. 
+- I used the open source code and adapted it to our use case. Below image shows the heatmap visualization for our test dataset using WSDAN technique which I implemented on the Wyze Test Dataset. 
 
 <img width="654" alt="Screen Shot 2022-06-11 at 1 28 55 PM" src="https://user-images.githubusercontent.com/50242614/173204254-ebe07f5b-39d0-4e61-ac4b-0d7ac235dcbb.png">
 
