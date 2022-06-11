@@ -1,20 +1,9 @@
-# WS-DAN.PyTorch
+## WS-DAN.PyTorch
 PyTorch implementation of WS-DAN (Weakly Supervised Data Augmentation Network) for FGVC (Fine-Grained Visual Classification) (_Hu et al._, 
 ["See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification"](https://arxiv.org/abs/1901.09891v2), arXiv:1901.09891)
 
-Cloned from [Pytorch version]()
-
-
-Getting started
-git clone https://github.com/GuYuc/WS-DAN.PyTorch
-
-
-
-# WS-DAN.PyTorch
-A neat PyTorch implementation of WS-DAN (Weakly Supervised Data Augmentation Network) for FGVC (Fine-Grained Visual Classification). (_Hu et al._, ["See Better Before Looking Closer: Weakly Supervised Data Augmentation
-Network for Fine-Grained Visual Classification"](https://arxiv.org/abs/1901.09891v2), arXiv:1901.09891)
-
 **NOTICE: This is NOT an official implementation by authors of WS-DAN. The official implementation is available at [tau-yihouxiang/WS_DAN](https://github.com/tau-yihouxiang/WS_DAN) (and there's another unofficial PyTorch version [wvinzh/WS_DAN_PyTorch](https://github.com/wvinzh/WS_DAN_PyTorch)).** 
+
 
 
 
@@ -59,9 +48,10 @@ net = WSDAN(num_classes=num_classes, M=num_attentions, net='resnet50', pretraine
   ```
 
 
+
 ## Running instructionn  : 
 
-1. ``` git clone``` this repo.
+1. ``` git clone``` this repo - https://github.com/GuYuc/WS-DAN.PyTorch 
 
 2. Prepare data and **modify DATAPATH** in ```datasets/<abcd>_dataset.py```.
 
