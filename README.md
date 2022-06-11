@@ -29,3 +29,5 @@ Companies leverage a low-cost and effective method—data augmentation to reduce
 
 <img width="820" alt="Screen Shot 2022-06-11 at 1 15 37 PM" src="https://user-images.githubusercontent.com/50242614/173203500-dde0cdcd-eb7f-4b2d-8456-6de0dcef714c.png">
 
+
+ >> I also ran experiments with SEF, and TENT, utilizing the same backbone networks for training and benchmarking. 
