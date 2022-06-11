@@ -1,1 +1,6 @@
 
+Folder contains :
+
+1.resnet34_NodataAug.ipynb - renet34 architecture without Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset, Google and Youtube Dataset(all 3 tested separately) 
+2.resnet34_dataAug.ipynb - renet34 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset, Google and Youtube Dataset (all 3 tested separately)
+
