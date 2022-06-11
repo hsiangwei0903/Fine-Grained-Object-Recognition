@@ -3,6 +3,6 @@ Folder contains :
 
 
 
-1. resnet18_NodataAug.ipynb - renet50 architecture without Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset, Google and Youtube Dataset(all 3 tested separately) 
-2. resnet18_dataAug.ipynb - renet50 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset, Google and Youtube Dataset (all 3 tested separately)
+1. resnet18_NodataAug.ipynb - renet18 architecture without Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset, Google and Youtube Dataset(all 3 tested separately) 
+2. resnet18_dataAug.ipynb - renet18 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset, Google and Youtube Dataset (all 3 tested separately)
 
