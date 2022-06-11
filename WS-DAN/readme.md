@@ -71,6 +71,7 @@ net = WSDAN(num_classes=num_classes, M=num_attentions, net='resnet50', pretraine
 
 Code in ```eval.py``` helps generate attention maps. (Image, Heat Attention Map, Image x Attention Map)
 
+# Attention maps generated for our test dataset: 
 
 <img width="654" alt="Screen Shot 2022-06-11 at 1 28 55 PM" src="https://user-images.githubusercontent.com/50242614/173204008-c997e760-1f87-4ae3-a51f-233df32e793f.png">
 
