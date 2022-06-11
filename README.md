@@ -12,12 +12,14 @@
 - python==3.8 torch>=1.7.0 torchvision>=0.8.1
 
 # Image dataset
-- Training: Image data of the dog breeds in Stanford Dog datasets for training and evaluating was used. The corresponding folders in the Stanford Dogs dataset were used for training. 
-- Testing: We curated 3 custom datasets for testing. The dataset is available at https://drive.google.com/drive/folders/1GbegJxFDZHp0NiN0bq9VngtMXo9Vjaoi?usp=sharing
+- Training Dataset: Image data of the dog breeds in Stanford Dog datasets for training and evaluating was used. The corresponding folders in the Stanford Dogs dataset were used for training. 
+- Custom Testing Dataset: We curated 3 custom datasets for testing. The dataset is available at https://drive.google.com/drive/folders/1GbegJxFDZHp0NiN0bq9VngtMXo9Vjaoi?usp=sharing
 
 # Q1 - WSDAN: 
-PyTorch implementation of WS-DAN (Weakly Supervised Data Augmentation Network) for FGVC (Fine-Grained Visual Classification) (Hu et al., "See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification", arXiv:1901.09891)
-(** More details inside the respective folder**)
+- PyTorch implementation of WS-DAN (Weakly Supervised Data Augmentation Network) for FGVC (Fine-Grained Visual Classification) (Hu et al., "See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification", arXiv:1901.09891) (https://arxiv.org/abs/1901.09891) 
+(** More details inside the respective folder**) 
+
+- I used the open source code and adapted it to our use case. Below image shows the heatmap visualization for our test dataset using WSDAN technique. 
 
 <img width="654" alt="Screen Shot 2022-06-11 at 1 28 55 PM" src="https://user-images.githubusercontent.com/50242614/173204254-ebe07f5b-39d0-4e61-ac4b-0d7ac235dcbb.png">
 
