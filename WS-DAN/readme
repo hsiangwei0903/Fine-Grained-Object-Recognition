@@ -18,34 +18,11 @@ Network for Fine-Grained Visual Classification"](https://arxiv.org/abs/1901.0989
 
 
 
-
-## Innovations
-1. Data Augmentation: Attention Cropping and Attention Dropping
-    <div align="left">
-    <img src="./images/Fig1.png" height="600px" alt="Fig1" >
-    </div>
-
-2. Bilinear Attention Pooling (BAP) for Features Generation
-    <div align="left">
-    <img src="./images/Fig3.PNG" height="400px" alt="Fig3" >
-    </div>
-
-3. Training Process and Testing Process 
-    <div align="left">
-    <img src="./images/Fig2a.PNG" height="446px" alt="Fig2a" >
-    <img src="./images/Fig2b.PNG" height="400px" alt="Fig2b" >
-    </div>
-
-
-
-## Performance
+## Official Performance
 * PyTorch experiments were done on a Titan Xp GPU (batch_size = 12).
 
 |Dataset|Object|Category|Train|Test|Accuracy (Paper)|Accuracy (PyTorch)|Feature Net|
 |-------|------|--------|-----|----|----------------|--------------------|---|
-|[FGVC-Aircraft](http://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/)|Aircraft|100|6,667|3,333|93.0|93.28|inception_mixed_6e|
-|[CUB-200-2011](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)|Bird|200|5,994|5,794|89.4|88.28|inception_mixed_6e|
-|[Stanford Cars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html)|Car|196|8,144|8,041|94.5|94.38|inception_mixed_6e|
 |[Stanford Dogs](http://vision.stanford.edu/aditya86/ImageNetDogs/)|Dog|120|12,000|8,580|92.2|89.66|inception_mixed_7c|
 
 
@@ -53,7 +30,7 @@ Network for Fine-Grained Visual Classification"](https://arxiv.org/abs/1901.0989
 ## Usage
 
 ### WS-DAN
-This repo contains WS-DAN with feature extractors including VGG19(```'vgg19', 'vgg19_bn'```), 
+This repo  WS-DAN with feature extractors including VGG19(```'vgg19', 'vgg19_bn'```), 
 ResNet34/50/101/152(```'resnet34', 'resnet50', 'resnet101', 'resnet152'```), 
 and Inception_v3(```'inception_mixed_6e', 'inception_mixed_7c'```) in PyTorch form, see ```./models/wsdan.py```. 
 
@@ -66,50 +43,6 @@ net = WSDAN(num_classes=num_classes, M=num_attentions, net='resnet50', pretraine
 
 ### Dataset Directory
 
-* [FGVC-Aircraft](http://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/) (Aircraft)
-
-  ```
-  -/FGVC-Aircraft/data/
-                  └─── images
-                          └─── 0034309.jpg
-                          └─── 0034958.jpg
-                          └─── ...
-                  └─── variants.txt
-                  └─── images_variant_trainval.txt
-                  └─── images_variant_test.txt
-  ```
-
-* [CUB-200-2011](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html) (Bird)
-
-  ```
-  -/CUB-200-2011
-          └─── images.txt
-          └─── image_class_labels.txt
-          └─── train_test_split.txt
-          └─── images
-                  └─── 001.Black_footed_Albatross
-                          └─── Black_Footed_Albatross_0001_796111.jpg
-                          └─── ...
-                  └─── 002.Laysan_Albatross
-                  └─── ...
-  ```
-
-* [Stanford Cars](https://ai.stanford.edu/~jkrause/cars/car_dataset.html) (Car)
-
-  ```
-  -/StanfordCars
-        └─── cars_test
-                  └─── 00001.jpg
-                  └─── 00002.jpg
-                  └─── ...
-        └─── cars_train
-                  └─── 00001.jpg
-                  └─── 00002.jpg
-                  └─── ...
-        └─── devkit
-                  └─── cars_train_annos.mat
-        └─── cars_test_annos_withlabels.mat
-  ```
 
 * [Stanford Dogs](http://vision.stanford.edu/aditya86/ImageNetDogs/) (Dog)
 
@@ -126,7 +59,7 @@ net = WSDAN(num_classes=num_classes, M=num_attentions, net='resnet50', pretraine
   ```
 
 
-### Run
+## Running instructionn  : 
 
 1. ``` git clone``` this repo.
 
@@ -148,10 +81,7 @@ net = WSDAN(num_classes=num_classes, M=num_attentions, net='resnet50', pretraine
 
 Code in ```eval.py``` helps generate attention maps. (Image, Heat Attention Map, Image x Attention Map)
 
-<div align="center">
-<img src="./images/007_raw.jpg" height="200px" alt="Raw" >
-<img src="./images/007_heat_atten.jpg" height="200px" alt="Heat" >
-<img src="./images/007_raw_atten.jpg" height="200px" alt="Atten" >
-</div>
+
+
 
 
