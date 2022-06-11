@@ -1,7 +1,9 @@
 ## Fine-Grained Object Recognition Project
 
 This is the UW Capstone Project funded by [Wyze Labs](https://www.wyze.com/) and the [UW ECE department](https://www.ece.uw.edu/).
-![](dog_classifier.png)
+
+
+<img width="416" alt="Screen Shot 2022-06-11 at 1 48 16 PM" src="https://user-images.githubusercontent.com/50242614/173204388-9a35c66f-c26c-4402-bb6e-89ed356e4fc7.png">
 
 
 # Installation :  
