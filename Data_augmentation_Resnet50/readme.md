@@ -1,10 +1,12 @@
 
-## Data augmentation 
-The accuracy of deep learning models largely depends on the quality, quantity, and contextual meaning of training data. However, data scarcity is one of the most common challenges in building deep learning models. In production use cases, collecting such data can be costly and time-consuming. For our problem, incorporating the test dataset scenario into our training model 4
+## Data augmentation with different ResNet architectures
+The accuracy of deep learning models largely depends on the quality, quantity, and contextual meaning of training data. However, data scarcity is one of the most common challenges in building deep learning models. In production use cases, collecting such data can be costly and time-consuming. For our problem, incorporating the test dataset scenario into our training model to help 
 
-Companies leverage a low-cost and effective method—data augmentation to reduce dependency on the collection and preparation of training examples and build high-precision AI models quicker.
+I wrote the entire pipeline from scratch keeping in account with our problem statement.  Building a data augmentation pipeline with the ResNet background was crucial to understand and improve the flat classification baseline methods. It was observed that across majority of the  models, data augmentation significantly improved performance. Resnet18 model performs better across all 3 datasets.  Anomalies is the Google dataset in ResNet 50 architecture, suspect overfitting. 
 
-I wrote the entire pipeline from scratch keeping in account with our problem statement. Building a data augmentation pipeline with the ResNet background was crucial.
+
+Thus for Companies leverage a low-cost and effective method such as data augmentation helps to reduce dependency on the collection and preparation of training examples and build high-precision AI models quicke
+
 
 <img width="822" alt="Screen Shot 2022-06-11 at 1 35 59 PM" src="https://user-images.githubusercontent.com/50242614/173204060-47e2204d-9485-45eb-9500-a0aaac66d944.png">
 
