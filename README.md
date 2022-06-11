@@ -9,6 +9,9 @@ This is the UW Capstone Project funded by [Wyze Labs](https://www.wyze.com/) and
 # Installation :  
 python==3.8 torch>=1.7.0 torchvision>=0.8.1
 
+# Image data
+Image data of the dog breeds in Stanford Dog datasets for training and evaluating was used. The corresponding folders in the Stanford Dogs dataset were used for training. We curated 3 custom datasets for testing. The dataset is available at https://drive.google.com/drive/folders/1GbegJxFDZHp0NiN0bq9VngtMXo9Vjaoi?usp=sharing
+
 # Q1 - WSDAN: 
 PyTorch implementation of WS-DAN (Weakly Supervised Data Augmentation Network) for FGVC (Fine-Grained Visual Classification) (Hu et al., "See Better Before Looking Closer: Weakly Supervised Data Augmentation Network for Fine-Grained Visual Classification", arXiv:1901.09891)
 (** More details inside the respective folder**)
