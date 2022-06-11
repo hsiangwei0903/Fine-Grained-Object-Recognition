@@ -10,3 +10,10 @@ I wrote the entire pipeline from scratch keeping in account with our problem sta
 
 
 <img width="774" alt="Screen Shot 2022-06-11 at 1 36 26 PM" src="https://user-images.githubusercontent.com/50242614/173204076-fd9c662e-d702-4eab-83c8-29b6c8179dcd.png">
+
+
+Folder contains :
+> stanforddogs_train&test - renet50 architecture without Data Augmentation, trained and tested on Stanford dogs datset 
+> resnet50_noDataAug - renet50 architecture without Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset
+> wyze_test - renet50 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Wyze Dataset
+> youtube_googleImages - renet50 architecture with Data Augmentation, trained on Stanford dogs datset, tested on Google and Youtube Dataset
